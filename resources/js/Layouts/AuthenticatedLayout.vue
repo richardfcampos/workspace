@@ -12,7 +12,7 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gradient-to-r from-green-400 to-blue-500">
             <nav
                 class="border-b border-gray-100 bg-white"
             >
@@ -30,16 +30,16 @@ const showingNavigationDropdown = ref(false);
                             </div>
 
                             <!-- Navigation Links -->
-                            <div
-                                class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
-                            >
-                                <NavLink
-                                    :href="route('dashboard')"
-                                    :active="route().current('dashboard')"
-                                >
-                                    Dashboard
-                                </NavLink>
-                            </div>
+<!--                            <div-->
+<!--                                class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"-->
+<!--                            >-->
+<!--                                <NavLink-->
+<!--                                    :href="route('dashboard')"-->
+<!--                                    :active="route().current('dashboard')"-->
+<!--                                >-->
+<!--                                    Dashboards-->
+<!--                                </NavLink>-->
+<!--                            </div>-->
                         </div>
 
                         <div class="hidden sm:ms-6 sm:flex sm:items-center">

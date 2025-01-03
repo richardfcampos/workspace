@@ -5,11 +5,11 @@ import { Link } from '@inertiajs/vue3';
 
 <template>
     <div
-        class="flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0"
+        class="flex min-h-screen flex-col items-center bg-gradient-to-r from-green-400 to-blue-500 pt-6 sm:justify-center sm:pt-0"
     >
         <div>
             <Link href="/">
-                <ApplicationLogo class="h-20 w-20 fill-current text-gray-500" />
+                <ApplicationLogo titleClasses="text-5xl font-bold text-[#FF2D20]" />
             </Link>
         </div>
 

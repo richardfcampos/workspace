@@ -8,7 +8,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     if (Auth::check()) {
-        return redirect('/dashboard');
+        return redirect('/workspaces');
     }
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -18,9 +18,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/workspaces', function () {
+    return Inertia::render('Workspaces');
+})->middleware(['auth', 'verified'])->name('workspaces');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

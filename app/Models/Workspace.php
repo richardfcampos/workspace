@@ -17,13 +17,15 @@ class Workspace extends Model
 
     public function users()
     {
-        return $this->hasManyThrough(User::class, WorkspaceUser::class, 'workspace_id', 'id', 'id', 'user_id');
+        return $this->hasManyThrough(User::class, WorkspaceUser::class, 'workspace_id', 'id', 'id', 'user_id')
+            ->where('is_owner', false);
 
     }
 
     public function owner()
     {
-        $this->users->where('is_owner', true)->first();
+        return $this->hasOneThrough(User::class, WorkspaceUser::class, 'workspace_id', 'id', 'owner_id', 'id')
+            ->where('is_owner', true);
     }
 
     public function documents()

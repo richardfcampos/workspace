@@ -10,7 +10,8 @@ class Workspace extends Model
     use SoftDeletes;
 
     protected $fillable = [
-      'name'
+        'name',
+        'owner_id'
     ];
 
 

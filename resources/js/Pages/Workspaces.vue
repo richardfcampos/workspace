@@ -1,10 +1,23 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
+import WorkspacesForm from '@/Components/Forms/WorkspacesForm.vue';
+import { Link } from '@inertiajs/vue3';
 
 const isModalVisible = ref(false);
+
+const props = defineProps({
+    workspaces: {
+        type: Object,
+        required: false,
+    },
+});
+
+const getWorkspaceLink = (id) => {
+    return `/workspace/${id}`;
+}
 </script>
 
 <template>
@@ -22,14 +35,21 @@ const isModalVisible = ref(false);
                     </button>
                 </div>
 
-                <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">You're logged in!</div>
+                <div class="overflow-hidden sm:rounded-lg flex flex-wrap gap-3">
+                    <Link
+                        :href="getWorkspaceLink(workspace.id)"
+                        v-for="workspace in props.workspaces.data"
+                        :key="workspace.id"
+                    >
+                        <div class="p-10 bg-white shadow-sm rounded"> {{ workspace.name }}</div>
+                    </Link>
+
+
                 </div>
             </div>
         </div>
     </AuthenticatedLayout>
     <Modal v-model="isModalVisible">
-        <h2>Modal Title</h2>
-        <p>Modal content goes here.</p>
+        <WorkspacesForm @close="isModalVisible = false" />
     </Modal>
 </template>

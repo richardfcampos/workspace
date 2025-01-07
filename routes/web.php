@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WorkspacesController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,9 +19,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/workspaces', function () {
-    return Inertia::render('Workspaces');
-})->middleware(['auth', 'verified'])->name('workspaces');
+Route::middleware('auth')->group(function() {
+    Route::get('/workspaces', [WorkspacesController::class, 'index'])->name('workspaces');
+    Route::get('/workspace/{workspace}', [WorkspacesController::class, 'show'])->name('workspaces.show');
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

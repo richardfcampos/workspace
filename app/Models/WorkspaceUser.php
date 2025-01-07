@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class WorkspaceUser extends Model
 {
+
+    protected $table = 'workspace_user';
     protected $fillable = [
         'workspace_id',
         'user_id',
+        'is_owner',
     ];
 
     public function workspace()

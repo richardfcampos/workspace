@@ -9,6 +9,8 @@ class Document extends Model
 {
     use SoftDeletes;
 
+    protected $table = 'documents';
+
     protected $fillable = [
         'title',
         'content',

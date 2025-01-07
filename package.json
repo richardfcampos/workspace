@@ -28,6 +28,7 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
+        "@vueup/vue-quill": "^1.2.0",
         "vue-final-modal": "^4.5.5"
     }
 }
